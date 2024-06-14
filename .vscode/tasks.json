@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Run MARS",
+        "type": "shell",
+        "command": "java",
+        "args": [
+          "-jar",
+          "C:\\Mars\\Mars4_5.jar",  // Ajusta la ruta según donde hayas guardado Mars4_5.jar
+          "${workspaceFolder}\\chacalesGame.asm"  // Asegúrate de que esta ruta apunte a tu archivo .asm
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+  
