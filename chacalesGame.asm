@@ -1,13 +1,26 @@
-.data
-    # Definir la cadena a imprimir
-    hello_msg: .asciiz "Hello, World!\n"
+.data   
 
-.text
-    # Cargar el código para imprimir cadena
-    li $v0, 4          # Cargar el código 4 para imprimir cadena
-    la $a0, hello_msg  # Cargar la dirección de la cadena en $a0
-    syscall            # Llamar al sistema para imprimir la cadena
+tablero:                    .space  48                                                                              #tablero que guardara la ubicacion de los chacales y los tesoros
+descubiertas:               .space  48                                                                              #tablero que guardara la informacion sobre si la ubicacion de un tablero fue descubierto o no
+tesorosDescubiertos:        .word   0                                                                               #contador para la cantidad de tesoros descubiertos
+chacalesDescubiertos:       .word   0                                                                               # contados de chacales descubiertos
+dineroGanado:               .word   0                                                                               #Dinero acumulado
+titulo:                     .asciiz "Chacales Game\n"
+    # Mensajes para imprimir
+board_message:              .asciiz "Estado actual del tablero:\n"
+money_message:              .asciiz "Dinero acumulado: $"
+options_message:            .asciiz "\nOpciones disponibles:\n"
+decision_message:           .asciiz "¿Qué desea hacer?\n1. Continuar jugando\n2. Retirarse\nIngrese su opción: "
+exit_message:               .asciiz "\n¡Juego finalizado!\n"
+treasures_found_message:    .asciiz "Número de tesoros encontrados: "
+chacals_found_message:      .asciiz "Número de chacales encontrados: "
+newline_message:            .asciiz "\n"
 
-    # Terminar el programa
-    li $v0, 10         # Cargar el código 10 para terminar el programa
-    syscall            # Llamar al sistema para salir
+
+
+
+
+.text   
+
+
+main:                       
