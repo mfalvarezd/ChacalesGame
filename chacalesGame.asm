@@ -9,10 +9,10 @@ titulo:                     .asciiz "Chacales Game\n"
 board_message:              .asciiz "Estado actual del tablero:\n"
 money_message:              .asciiz "Dinero acumulado: $"
 options_message:            .asciiz "\nOpciones disponibles:\n"
-decision_message:           .asciiz "¿Qué desea hacer?\n1. Continuar jugando\n2. Retirarse\nIngrese su opción: "
-exit_message:               .asciiz "\n¡Juego finalizado!\n"
-treasures_found_message:    .asciiz "Número de tesoros encontrados: "
-chacals_found_message:      .asciiz "Número de chacales encontrados: "
+decision_message:           .asciiz "Â¿QuÃ© desea hacer?\n1. Continuar jugando\n2. Retirarse\nIngrese su opciÃ³n: "
+exit_message:               .asciiz "\nÂ¡Juego finalizado!\n"
+treasures_found_message:    .asciiz "NÃºmero de tesoros encontrados: "
+chacals_found_message:      .asciiz "NÃºmero de chacales encontrados: "
 newline_message:            .asciiz "\n"
 board_generation:           .asciiz "Generando tablero\n"
 
@@ -20,12 +20,12 @@ board_generation:           .asciiz "Generando tablero\n"
 .globl main
 
 main:
-    # Mostrar el título del juego
+    # Mostrar el tÃ­tulo del juego
     li $v0, 4
     la $a0, titulo
     syscall
     
-    # Mostrar mensaje de generación del tablero
+    # Mostrar mensaje de generaciÃ³n del tablero
     li $v0, 4
     la $a0, board_generation
     syscall
@@ -36,15 +36,15 @@ main:
     # Bucle principal del juego
 bucle_juego:
     jal mostrar_tablero
-    # ... aquí iría el resto de la lógica del juego ...
+    # ... aquÃ­ irÃ­a el resto de la lÃ³gica del juego ...
     j bucle_juego
 
 # Inicializar el tablero
 inicializar_tablero:
     # Inicializar variables de conteo
-    li $t0, 4  # Número de chacales
-    li $t1, 8  # Número de tesoros
-    li $t2, 12 # Número total de casillas
+    li $t0, 4  # NÃºmero de chacales
+    li $t1, 8  # NÃºmero de tesoros
+    li $t2, 12 # NÃºmero total de casillas
     
     # Limpiar el tablero
     la $t3, tablero
@@ -61,7 +61,7 @@ clear_tablero:
     j clear_tablero
 
 fin_clear:
-    # Inicializar número total de casillas de nuevo
+    # Inicializar nÃºmero total de casillas de nuevo
     li $t2, 12
     la $t8, tablero  # Puntero para almacenar las posiciones usadas
     
@@ -69,19 +69,19 @@ fin_clear:
     beq $t0, $zero, distribuir_tesoros
 
 generar_posicion_chacales:
-    li $v0, 42       # Servicio para generar número aleatorio
-    li $a1, 1        # Valor mínimo
-    li $a2, 12       # Valor máximo
+    li $v0, 42       # Servicio para generar nÃºmero aleatorio
+    li $a1, 1        # Valor mÃ­nimo
+    li $a2, 12       # Valor mÃ¡ximo
     syscall
     sub $v0, $v0, 1  # Ajustar el rango a 0-11
     la $t6, tablero
     add $t6, $t6, $v0
 
-    # Verificar si la posición está vacía
+    # Verificar si la posiciÃ³n estÃ¡ vacÃ­a
     lb $t7, 0($t6)
     bne $t7, $zero, generar_posicion_chacales
 
-    # Colocar chacal en la posición vacía
+    # Colocar chacal en la posiciÃ³n vacÃ­a
     li $t7, 1
     sb $t7, 0($t6)
     addi $t8, $t8, 1
@@ -92,19 +92,19 @@ distribuir_tesoros:
     beq $t1, $zero, fin_inicializacion
 
 generar_posicion_tesoros:
-    li $v0, 42       # Servicio para generar número aleatorio
-    li $a1, 1        # Valor mínimo
-    li $a2, 12       # Valor máximo
+    li $v0, 42       # Servicio para generar nÃºmero aleatorio
+    li $a1, 1        # Valor mÃ­nimo
+    li $a2, 12       # Valor mÃ¡ximo
     syscall
     sub $v0, $v0, 1  # Ajustar el rango a 0-11
     la $t6, tablero
     add $t6, $t6, $v0
 
-    # Verificar si la posición está vacía
+    # Verificar si la posiciÃ³n estÃ¡ vacÃ­a
     lb $t7, 0($t6)
     bne $t7, $zero, generar_posicion_tesoros
 
-    # Colocar tesoro en la posición vacía
+    # Colocar tesoro en la posiciÃ³n vacÃ­a
     li $t7, 2
     sb $t7, 0($t6)
     addi $t8, $t8, 1
@@ -123,7 +123,7 @@ mostrar_tablero:
     
     # Inicializar contadores
     la $t0, descubiertas
-    li $t2, 12  # Número total de casillas
+    li $t2, 12  # NÃºmero total de casillas
     
 mostrar_loop:
     beq $t2, $zero, fin_mostrar
