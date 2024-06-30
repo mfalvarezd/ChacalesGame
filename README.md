@@ -2,7 +2,7 @@
 
 Este proyecto implementa el juego de Chacales en lenguaje MIPS, un conjunto de instrucciones utilizado comúnmente en arquitecturas de computadoras educativas y embebidas.
 
-![Screenshot](imagenes\screenshot.png)
+![Screenshot](imagenes/screenshot.png)
 
 ## Descripción
 
