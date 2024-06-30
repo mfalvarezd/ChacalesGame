@@ -29,11 +29,10 @@ El objetivo del juego es recolectar 4 tesoros antes de descubrir todos los chaca
 2. Comando para ejecutar el proyecto: 
 * Ejecutar desde la carpeta del proyecto
 * java -jar .\simulador\Mars4_5.jar .\chacalesGame.asm
-3. También se puede utilizar VS Code, y ejecutar la tarea, Seleccionando "Run Task" y luego seleccionar "Run MARS"
+3. También se puede utilizar VS Code, y ejecutar la tarea, Seleccionando Terminal seguido de "Run Task" y luego seleccionar "Run MARS"
 ## Uso
 
 Inicia el juego según las instrucciones del simulador MIPS.
-Selecciona una casilla para descubrir su contenido.
 Sigue las indicaciones en pantalla para gestionar tu estrategia y decidir continuar o retirarte.
 ## Contribución
 Si deseas contribuir a este proyecto, sigue estos pasos:
